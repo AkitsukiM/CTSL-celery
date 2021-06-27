@@ -1,0 +1,3 @@
+6 th18_EX B
+10 th06_NB A		
+13 th10_NM C
