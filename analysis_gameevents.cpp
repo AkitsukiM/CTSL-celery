@@ -20,6 +20,8 @@ int analysis_gameevents(string str)
 	for (; i != str.size() && str[i] != 'A' && str[i] != 'B' && str[i] != 'C'; ++i); // 跳过A/B/C前面的字符
 	if (i != str.size()) team_char = str[i];
 
+	if (number_string == "") return 1; // 防止stoi报错
+
 	int number_int = stoi(number_string);
 	gameevents_simple.insert({ number_int, game_string });
 	GameEvent gameevent(number_int, team_char);

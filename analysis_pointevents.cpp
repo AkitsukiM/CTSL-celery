@@ -28,6 +28,8 @@ int analysis_pointevents(string str)
 	for (; i != str.size() && !isdigit(str[i]); ++i); // 跳过前面的非数字字符
 	for (; i != str.size() && isdigit(str[i]); ++i) point_string += str[i];
 
+	if (number_string == "" || point_string == "") return 1; // 防止stoi报错
+
 	int number_int = stoi(number_string);
 	PointEvent pointevent(qqnumber_string, game_string, team_char, stoi(point_string)); // 特别注意！这里登记是正数
 	pointevents.insert({ number_int, pointevent });
