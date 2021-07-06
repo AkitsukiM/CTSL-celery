@@ -15,12 +15,18 @@ int analysis_gameevents(string str)
 	for (; i != str.size() && isdigit(str[i]); ++i) number_string += str[i];
 
 	for (; i != str.size() && str[i] != 't'; ++i); // 跳过th**_**前面的字符
-	for (; i != str.size() && !isspace(str[i]); ++i) game_string += str[i];
+	int i7 = i + 7;
+	for (; i != str.size() && i != i7; ++i) game_string += str[i];
 
-	for (; i != str.size() && str[i] != 'A' && str[i] != 'B' && str[i] != 'C'; ++i); // 跳过A/B/C前面的字符
+	for (; i != str.size() && str[i] != 'A' && str[i] != 'B' && str[i] != 'C' && str[i] != 'D'; ++i); // 跳过A/B/C/D前面的字符
 	if (i != str.size()) team_char = str[i];
 
-	if (number_string == "") return 1; // 防止stoi报错
+	if (number_string == "" || team_char == 0)
+	{
+		cout << "number_string: " << number_string
+			<< "; team_char: 0" << endl;
+		return 1; // 防止stoi报错
+	}
 
 	int number_int = stoi(number_string);
 	gameevents_simple.insert({ number_int, game_string });
