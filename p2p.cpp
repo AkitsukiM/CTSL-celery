@@ -74,6 +74,7 @@ int pointevents_to_personlogs()
 		(*personlogs_iter).second.write_pointevents(PointEvent(qqnumber, game, team, -point));
 		// �ۼƻƵ㵽GameEvents
 		(*gameevents_iter).second.add_point_sum(point);
+		(*gameevents_iter).second.add_point_abc(point, team);
 		if (team == (*gameevents_iter).second.read_team())
 		{
 			(*gameevents_iter).second.add_point_winner(point);

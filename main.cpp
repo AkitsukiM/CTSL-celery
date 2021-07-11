@@ -44,7 +44,7 @@ int main()
 
 	while (1)
 	{
-		cout << "\n请选择：\n1. 打印当前资金力状况\n2. 查询个人资金力记录\n3. 退出" << endl;
+		cout << "\n请选择：\n1. 查询所有资金力状况\n2. 查询个人资金力记录\n3. 查询项目赔率\nq. 退出" << endl;
 		string choice; getline(cin, choice);
 		if (choice[0] == '1')
 		{
@@ -65,6 +65,16 @@ int main()
 				(*iter).second.def_print();
 		}
 		else if (choice[0] == '3')
+		{
+			cout << "请输入需要查询的项目：" << endl;
+			string game; getline(cin, game);
+			auto iter = gameevents.find(game);
+			if (iter == gameevents.end())
+				cout << "无法查询到项目" << game << endl;
+			else
+				(*iter).second.def_abc();
+		}
+		else if (choice[0] == 'q')
 		{
 			break;
 		}

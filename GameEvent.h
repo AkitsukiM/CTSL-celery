@@ -22,6 +22,7 @@ public:
 		point_sum = 0;
 		point_winner = 0;
 		// winner为空容器
+		point_a = 0, point_b = 0, point_c = 0;
 	}
 
 	GameEvent()
@@ -30,6 +31,7 @@ public:
 		team = 0;
 		point_sum = 0;
 		point_winner = 0;
+		point_a = 0, point_b = 0, point_c = 0;
 	}
 
 	// 析构函数
@@ -47,6 +49,14 @@ public:
 	// 写入winner容器
 	void write_winner(PointEvent a_pointevent) { winner.push_back(a_pointevent); }
 
+	void add_point_abc(int a_point, char a_team)
+	{
+		if (a_team == 'A') point_a += a_point;
+		else if (a_team == 'B') point_b += a_point;
+		else if (a_team == 'C') point_c += a_point;
+		else cout << "?" << endl;
+	}
+
 	// 统一更新winner容器
 	void update_winner();
 
@@ -60,11 +70,21 @@ public:
 		}
 	}
 
+	void def_abc()
+	{
+		cout << "Team A: " << point_a << " / " << point_sum << " ^-1 = " << 1.0 * point_sum / point_a << endl;
+		cout << "Team B: " << point_b << " / " << point_sum << " ^-1 = " << 1.0 * point_sum / point_b << endl;
+		cout << "Team C: " << point_c << " / " << point_sum << " ^-1 = " << 1.0 * point_sum / point_c << endl;
+	}
+
 private:
 	int number;
 	char team;
 	int point_sum;
 	int point_winner;
+	int point_a;
+	int point_b;
+	int point_c;
 	vector<PointEvent> winner;
 };
 
