@@ -69,13 +69,14 @@ int pointevents_to_personlogs()
 			point = 100;
 		else if (point > personlogs_point)
 			point = personlogs_point;
+
 		// 登记到personlogs
 		// 登记的时候用负数表示支付
 		(*personlogs_iter).second.write_pointevents(PointEvent(qqnumber, game, team, -point));
 		// 累计黄点到GameEvents
+		(*gameevents_iter).second.add_teampoint(team, point);
 		(*gameevents_iter).second.add_point_sum(point);
-		(*gameevents_iter).second.add_point_abc(point, team);
-		if (team == (*gameevents_iter).second.read_team())
+		if ((*gameevents_iter).second.read_teamrank(team) == '1')
 		{
 			(*gameevents_iter).second.add_point_winner(point);
 			(*gameevents_iter).second.write_winner(PointEvent(qqnumber, game, team, point));

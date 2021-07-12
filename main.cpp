@@ -72,7 +72,7 @@ int main()
 			if (iter == gameevents.end())
 				cout << "无法查询到项目" << game << endl;
 			else
-				(*iter).second.def_abc();
+				(*iter).second.def_print_teampoint_odds();
 		}
 		else if (choice[0] == 'q')
 		{
