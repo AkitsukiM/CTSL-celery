@@ -14,7 +14,7 @@ int main()
 	cout << "personlist.txt open successfully!" << endl;
 	while (getline(file, temp))
 	{
-		if (temp != "" && temp.size() > 2)
+		if (temp != "" && temp.size() >= 3 && isdigit(temp[0]) && temp[1] == '.' && isdigit(temp[2]))
 		{
 			PersonInfo a_person(temp, (temp[0] - '0') + (temp[2] - '0') / 10.0);
 			personlist.push_back(a_person);
@@ -50,8 +50,10 @@ int main()
 	for (auto jter = giftlist.begin(); jter != giftlist.end(); ++jter)
 	{
 		getchar();
+		cout << "奖品：" << *jter << endl;
+		getchar();
 		double num = u(e);
-		cout << "奖品：" << *jter << endl << "随机数：" << num << endl;
+		cout << "随机数：" << num << endl;
 		num *= sum;
 		for (auto iter = personlist.begin(); iter != personlist.end(); ++iter)
 		{
